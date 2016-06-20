@@ -22,7 +22,7 @@
        
         <article>
           <div>
-            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <i class="flaticon-time-1" aria-hidden="true"></i>
             <h4>CALENDARIO</h4>
           </div>  
     
