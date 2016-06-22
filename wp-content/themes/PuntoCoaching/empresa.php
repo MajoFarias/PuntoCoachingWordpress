@@ -11,14 +11,24 @@ Template Name: Empresa
 
 
 <section id="eyecatcherInEmpresa">
-    <div class="content">
-     <div class="text">
-     <!--  <h2>Soy Empresa</h2> -->
-      <h1><?php the_field('title'); ?></h1>
-      <p><?php the_field('description'); ?></p>
-      </div>  
-      <div class="degrade"></div>
-      <img src="<?php the_field('image-2'); ?>" alt="">
+      <div class="content">
+      <?php if( have_rows('head') ): ?>
+        <?php while( have_rows('head') ): the_row();
+
+          $name = get_sub_field('name');
+          $text = get_sub_field('text');
+          $icon = get_sub_field('icon');
+        ?>
+        <div class="text">
+          <h2>Soy Empresa</h2>
+          <h1><?php the_field('title'); ?></h1>
+          <p><?php the_field('description'); ?></p>
+        </div>  
+        <div class="degrade"></div>
+        <img src="<?php the_field('image-2'); ?>" alt="">
+        <?php endwhile; else: ?>
+        <h1>no hay post</h1>
+        <?php endif; ?> 
     </div>
 </section>
 

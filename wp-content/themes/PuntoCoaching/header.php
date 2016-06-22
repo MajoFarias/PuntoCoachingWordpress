@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- <meta charset="UTF-8"> -->
 	<title>Punto Coaching</title>
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
@@ -13,75 +14,43 @@
  <header>
    <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">
-      	<img src="<?php bloginfo('template_url')?>/assets/img/logo.jpg" alt="punto-coaching">
-      	<img class="hidden" src="<?php bloginfo('template_url')?>/assets/img/logoSmall.jpg" alt="punto-coaching">
+  
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand-logo">
+      <img src="<?php bloginfo('template_url')?>/assets/img/logo.jpg" alt="punto-coaching">
+        <img class="hidden" src="<?php bloginfo('template_url')?>/assets/img/logoSmall.jpg" alt="punto-coaching">
       </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse">
         <i class="fa fa-bars" aria-hidden="true"></i>
       </a>
-      <ul class="right hide-on-med-and-down">
-        <li class="dropdown">
-          <a href="#"  class="drop dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Soy Persona
-            <span class="deg flaticon-next"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a  href="#">Taller Reescribe tu historia</a>
-              <i>Cambia tus pensamientos negativos por  
-               conversaciones internas poderosas.</i>
-            </li>
-            <li><a href="#">Desarrolla tu Coeficiente Intelectual</a></li>
-            <li><a href="#">Sesiones Individuales</a></li>
-          </ul>
-        </li> 
-        <li class="dropdown">
-          <a href="#" class="drop dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Soy Empresa<span class=" deg flaticon-next"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">One</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Quiero Ser Coatch</a></li>
-        <li><a href="#">Calendario</a></li>
-        <li><a href="#">Punto Coaching</a></li>
-         <li>
-           <a href="#">
-           <i class="flaticon-new-email-outline"></i>
-              Contacto
-            </a>
-          </li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-	      <a href="#">
-	      	<i class="flaticon-close-button" aria-hidden="true"></i>
-	      </a>
-        <li class="dropdown">
-          <a href="#"  class="drop dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Soy Persona
-            <span class="deg flaticon-next"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a  href="#">Taller Reescribe tu historia</a>
-            </li>
-            <li><a href="#">Desarrolla tu Coeficiente Intelectual</a></li>
-            <li><a href="#">Sesiones Individuales</a></li>
-          </ul>
-        </li> 
-        <li class="dropdown">
-          <a href="#" class="drop dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Soy Empresa<span class=" deg flaticon-next"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">One</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Quiero Ser Coatch</a></li>
-        <li><a href="#">Calendario</a></li>
-        <li><a href="#">Punto Coaching</a></li>
-         <li>
-           <a href="#">
-           <i class="flaticon-new-email-outline"></i>
-              Contacto
-            </a>
-          </li>
-      </ul>
+
+       <?php
+            
+        $args = array(
+          'theme_location' => 'top-bar',
+          'depth'    => 0,
+          'container'  => false,
+          'menu_class'   => 'right hide-on-med-and-down',
+          // 'menu_id'   => 'mobile-demo',
+          'walker'   => new BootstrapNavMenuWalker()
+        );
+
+        wp_nav_menu($args);
+      
+      ?>
+      <?php
+            
+        $args = array(
+          'theme_location' => 'top-bar',
+          'depth'    => 0,
+          'container'  => false,
+          'menu_class'   => 'side-nav',
+          'menu_id'   => 'mobile-demo',
+          'walker'   => new BootstrapNavMenuWalker()
+        );
+
+        wp_nav_menu($args);
+      
+      ?>
     </div>
    </nav>
   </header>

@@ -18,20 +18,25 @@
   //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
   //   }
   // );
+  $(".dropdown-toggle").click(function (){
 
-    $(".drop").click(function (){
-    	$(this).parent('li').children(".dropdown-menu").toggleClass('show');
-    });
+    $(".dropdown-toggle").not(this).parent('li').children(".dropdown-menu").removeClass('show');
+    $(this).parent('li').children(".dropdown-menu").toggleClass('show');
+});
 
+  $(".dropHover").hover(function (){
+    $(".dropdown-toggle").not(this).parent('li').children(".dropdown-menu").removeClass('show');
+    // $(this).parent('li').children(".dropdown-menu").toggleClass('show');
+});
 
 
 
 
 //$('.button-collapse').sideNav('hide');
-  $(".drop").click(function () {
-        $( this ).children(".deg").toggleClass("rotate180");
-        //$( this ).toggleClass( "highlight" );        
-  });
+  // $(".dropdown-toggle").click(function () {
+  //       $( this ).children(".deg").toggleClass("rotate180");
+  //       //$( this ).toggleClass( "highlight" );        
+  // });
 
 
  
