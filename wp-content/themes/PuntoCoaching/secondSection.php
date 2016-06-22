@@ -74,10 +74,10 @@
     
     <div class="controls">
        <a class="btn-carousel" id="scrollUp" href="#">
-        <i class="flaticon-arrows-2"></i>
+        <i class="flaticon-arrows"></i>
       </a>
       <a class="btn-carousel" id="scrollDown" href="#">
-        <i class="flaticon-arrows-3"></i>
+        <i class="flaticon-arrows-2"></i>
       </a>
     </div>  
   

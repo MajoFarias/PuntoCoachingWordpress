@@ -37,6 +37,7 @@
         wp_nav_menu($args);
       
       ?>
+
       <?php
             
         $args = array(
@@ -51,6 +52,9 @@
         wp_nav_menu($args);
       
       ?>
+      <a href="#">
+          <i class="flaticon-close-button" aria-hidden="true">DDD</i>
+        </a>
     </div>
    </nav>
   </header>

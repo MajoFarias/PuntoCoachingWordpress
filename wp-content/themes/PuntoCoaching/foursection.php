@@ -52,14 +52,15 @@
         <a href="<?php the_field('link-4'); ?>"><button class="btnColor btn-1 btn-1d">VER MÁS</button></a>
         </p> 
      </div>
-     <div class="controls2">
+    
+     <!-- <div class="controls2">
        <a class="btn-carousel" id="scrollUp" href="#">
         <i class="flaticon-arrows-1"></i>
       </a>
       <a class="btn-carousel" id="scrollDown" href="#">
         <i class="flaticon-arrows-3"></i>
       </a>
-    </div> 
+    </div>  -->
 
 
       <?php endwhile; else: ?>
