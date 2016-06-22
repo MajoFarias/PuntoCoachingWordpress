@@ -2784,7 +2784,7 @@ main {
       color: #666 !important; }
     .contactForm form textarea.materialize-textarea {
       font-size: 30px !important; }
-    .contactForm form input[type=text] {
+    .contactForm form input[type=text], .contactForm form input[type=email]  {
       font-size: 13px;
       margin-bottom: 0;
       line-height: 10px;

@@ -60,34 +60,34 @@ Template Name: Contacto
         <div class="row">
     
 
-    <form class="col s12">
+    <form class="col s12" action="javascript:void(0);">
       <div class="row">
           <div class="input-field col s12 m12">
-            <input id="nombre" type="text" class="validate">
+            <input name="nombre" id="nombre" type="text" class="validate" required>
             <label for="nombre">Nombre</label>
           </div>
           <div class="input-field col s12 m12">
-            <input id="e-mail" type="text" class="validate">
+            <input name="email" id="e-mail" type="email" class="validate" required>
             <label for="e-mail">E-mail</label>
           </div>
           <div class="input-field col s12 m4">
-            <input id="telefono" type="text" class="validate">
+            <input name="telefono" id="telefono" type="text" class="validate" required>
             <label for="telefono">Teléfono</label>
           </div>
           
            <div class="input-field col s12 m8">
-            <input id="kindOf" type="text" class="validate">
+            <input name="curso_taller" id="kindOf" type="text" class="validate" required>
             <label for="kindOf">Nombre del Curso o Taller</label>
           </div>
           
           <div class="input-field col s12 m12">
-            <input id="comentarios" type="text" class="validate">
+            <input name="comentarios" id="comentarios" type="text" class="validate" required>
             <label for="comentarios">Comentarios</label>
           </div>
           
            <div class="col s12">
             <p class="btnContent btn-in btn-contact">
-              <button class="btnColorZ btn-1 btn-1z">Enviar</button>
+              <button type="submit" class="btnColorZ btn-1 btn-1z">Enviar</button>
             </p>
           </div>
 
@@ -109,3 +109,25 @@ Template Name: Contacto
 <h1>no hay post</h1>
 <?php endif; ?> 
 <?php get_footer(); ?>
+<script>
+  $(document).ready(function() {
+    $('form.s12').submit(function(){
+        var params = {
+                nombre: $("#nombre").val(),
+                email: $("#e-mail").val(),
+                telefono: $("#telefono").val(),
+                curso_taller:$("#kindOf").val(),
+                comentarios:$("#comentarios").val()
+            };
+
+        $.ajax({
+          url: '<?php echo esc_url( home_url( '/' ) ); ?>phpmailer/send_mail.php',
+          type: 'POST',
+          data: params,
+          success: function (data) {
+            //window.location = '<?php echo esc_url( home_url( '/' ) ); ?>/gracias';
+          }
+        });     
+    });
+  });
+</script>
