@@ -5,18 +5,30 @@
 
 
         <article>
+          <?php if( have_rows('imagen') ): ?>
+          <?php while( have_rows('imagen') ): the_row();
+            $image = get_sub_field('image');
+          ?>
           <div id="video">
-            <img src="<?php the_field('image-2'); ?>" alt="">
+            <?php 
+            if( !empty($image) ): ?>
+            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+            <?php endif; ?>
           </div>
+
+           <?php endwhile; else: ?>
+          <h1>no hay post</h1>
+          <?php endif; ?> 
 
           <h2><?php the_field('title-2'); ?></strong></h2>
           <h4><?php the_field('subtitle-2'); ?></h4>
-          <p>
+          <span>
             <?php the_field('extract'); ?>
-          </p>
+          </span>
           <p class="btnContent">
-           <button class="btnColor btn-1 btn-1d">CONOCE MÁS</button>
-          </p> 
+           <button onclick="window.location.href='<?php the_field('link'); ?>'"  class="btnColor btn-1 btn-1d">CONOCE MÁS</button>
+          </p>
+
         </article>
        
        
@@ -38,11 +50,12 @@
             $year = get_sub_field('year');
             $time = get_sub_field('time');
             $name = get_sub_field('name');
+            $link = get_sub_field('link');
 
 
           ?>
 
-               <a href="#" class="element">
+               <a href="<?php echo $link; ?>" class="element">
                 <div class="head">
                   <i></i>
                   <span><strong><?php echo $day; ?><br> <?php echo $month; ?></strong><br><?php echo $year; ?></span>

@@ -10,27 +10,31 @@ Template Name: Empresa
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 
+<!--**HEAD**-->  
 <section id="eyecatcherInEmpresa">
-      <div class="content">
-      <?php if( have_rows('head') ): ?>
-        <?php while( have_rows('head') ): the_row();
-
-          $name = get_sub_field('name');
-          $text = get_sub_field('text');
-          $icon = get_sub_field('icon');
-        ?>
-        <div class="text">
-          <h2>Soy Empresa</h2>
-          <h1><?php the_field('title'); ?></h1>
-          <p><?php the_field('description'); ?></p>
-        </div>  
-        <div class="degrade"></div>
-        <img src="<?php the_field('image-2'); ?>" alt="">
-        <?php endwhile; else: ?>
-        <h1>no hay post</h1>
-        <?php endif; ?> 
+  <?php if( have_rows('head') ): ?>
+  <?php while( have_rows('head') ): the_row();
+  $title = get_sub_field('title');
+  $discriptionHead = get_sub_field('discriptionHead');
+  $image = get_sub_field('image');
+  ?>
+    <div class="content">
+      <div class="text">
+        <h2>Soy Empresa</h2>
+        <h1><?php echo $title; ?></h1>
+        <p><?php echo $discriptionHead; ?></p>
+      </div>  
+      <div class="degrade"></div>
+       <?php 
+          if( !empty($image) ): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+      <?php endif; ?>
     </div>
+  <?php endwhile; else: ?>
+  <h1>no hay post</h1>
+  <?php endif; ?>   
 </section>
+<!--**HEAD**-->
 
 
 <section id="InfoEmpresa">
@@ -50,7 +54,7 @@ Template Name: Empresa
         </div>  
       </article>
 
-      <span class="line"></span>
+    <!--   <span class="line"></span> -->
 
     <?php endwhile; else: ?>
     <h1>no hay post</h1>
@@ -76,16 +80,21 @@ Template Name: Empresa
 
             $title = get_sub_field('title');
             $text = get_sub_field('text');
-            $image = get_sub_field('image');
+            $img2 = get_sub_field('img2');
         ?>
         
         <aside>
+
             <?php 
-              if( !empty($image) ): ?>
-              <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-              <?php endif; ?>
+              if( !empty($img2) ): ?>
+              <img src="<?php echo $img2['url']; ?>" alt="<?php echo $img2['alt']; ?>" />
+            <?php endif; ?>
+ 
             <h3><?php echo $title; ?></h3>
-               <?php echo $text; ?>  
+            <div class="text">
+              <?php echo $text; ?>
+            </div>
+               
         </aside>
 
         <?php endwhile; else: ?>
@@ -106,6 +115,8 @@ Template Name: Empresa
 <h1>no hay post</h1>
 <?php endif; ?> 
 
+
+<?php include (TEMPLATEPATH. '/testimoniales.php'); ?>
 
 
 <?php get_footer(); ?>

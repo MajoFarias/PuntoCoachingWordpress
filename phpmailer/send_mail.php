@@ -7,7 +7,11 @@ require 'class.smtp.php';
 
 $mail = new subPHPMailer;
 
-
+foreach($_POST as $key => $value)
+{
+	$value = trim(preg_replace('/\n|\r/', '', $value));
+	$_POST[$key] = strip_tags($value);
+}
 
 $message = '<!DOCTYPE html>
 			<html>
@@ -30,28 +34,27 @@ $message = '<!DOCTYPE html>
 $mail->isSMTP();                                      // Set mailer to use SMTP
 
 $mail->Host = 'secure.emailsrvr.com';  // Specify main and backup SMTP servers
-//$mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = "sender@publicidadenlinea.com";
-$mail->Password = "360UvVcK";                          // SMTP password
-//$mail->Username = 'developer2585@gmail.com';                 // SMTP username
-//$mail->Password = 'alwbyzihrcqwnhkz';  
+
+$mail->Username = "centralcoaching@publicidadenlinea.com";
+$mail->Password = "draH6wEt";
+
 
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
 
 
 //$mail->isHTML(true);
-$mail->From         = 'not_reply@puntocoaching.com';
-$mail->FromName     = 'Info';
-//$mail->setFrom('info@puntocoaching.com.mx');
-//$mail->addAddress('contacto@puntocoaching.com.mx');
-$mail->addAddress('ivan.hernandez@publicidadenlinea.com');
-$mail->addAddress('van.m285@gmail.com');
+$mail->From         = $_POST['email'];
+$mail->FromName     = 'CONTACTO';
+$mail->addAddress('contacto@centralcoaching.com.mx');
+$mail->addAddress('daniel.rojas@publicidadenlinea.com');
+//$mail->addAddress('ivan.hernandez@publicidadenlinea.com');
+
   
 
 $mail->isHTML(true); 
-$mail->Subject = "CONTACTO PUNTO COACHING";
+$mail->Subject = "CENTRAL COACHING";
 $mail->Body = $message;
 //$mail->AltBody = $message;
 

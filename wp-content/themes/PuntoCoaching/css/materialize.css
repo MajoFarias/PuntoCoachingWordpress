@@ -6791,7 +6791,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 997;
+  z-index: 999999;
   will-change: opacity;
 }
 
@@ -7311,7 +7311,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .slider {
   position: relative;
-  height: 400px;
+/*  height: 400px;*/
   width: 100%;
 }
 
@@ -7337,7 +7337,7 @@ input[type=range]:focus::-ms-fill-upper {
 .slider .slides {
   background-color: #9e9e9e;
   margin: 0;
-  height: 400px;
+  /*height: 400px;*/
 }
 
 .slider .slides li {
@@ -7361,11 +7361,28 @@ input[type=range]:focus::-ms-fill-upper {
 .slider .slides li .caption {
   color: #fff;
   position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
+  top: 30%;
+  left: 10%;
+  width: 80%;
   opacity: 0;
 }
+ @media (max-width: 992px) {
+  .slider .slides li .caption {
+    color: #fff;
+    position: absolute;
+    top: 26%;
+    left: 15%;
+    width: 70%;
+    opacity: 0;
+  }
+
+ }
+
+ @media (max-width: 480px) {
+  .slider .slides li .caption { 
+    top: 21%;
+  }
+ }
 
 .slider .slides li .caption p {
   color: #e0e0e0;
@@ -7380,9 +7397,28 @@ input[type=range]:focus::-ms-fill-upper {
   text-align: center;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 30px;
   margin: 0;
+  z-index: 5;
 }
+   @media (max-width: 992px) {
+    .slider .indicators {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        bottom: 90px;
+        margin: 0;
+        z-index: 5;
+      }
+
+   }
+
+   @media (max-width: 480px) {
+    .slider .indicators { 
+        bottom: 30px; 
+      }
+   }
 
 .slider .indicators .indicator-item {
   display: inline-block;
@@ -7391,13 +7427,14 @@ input[type=range]:focus::-ms-fill-upper {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-  background-color: #e0e0e0;
+  border: 1px solid white; 
   transition: background-color .3s;
   border-radius: 50%;
 }
 
 .slider .indicators .indicator-item.active {
-  background-color: #4CAF50;
+  background-color: white;
+  border: 1px solid white;
 }
 
 .carousel {

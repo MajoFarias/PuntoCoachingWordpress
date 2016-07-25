@@ -25,7 +25,7 @@ class BootstrapNavMenuWalker extends Walker_Nav_Menu {
 		return get_the_ID();
 	}
 
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ,$type = 0) {
 
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -68,7 +68,11 @@ class BootstrapNavMenuWalker extends Walker_Nav_Menu {
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
+		if(0 == $type)
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		else
+			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after.'</a><i>'.esc_attr( $item->description ).'</i>';
+
 		$item_output .= ($depth == 0 && $args->has_children) ? ' <b class="caret"></b></a>' : '</a>';
 		$item_output .= $args->after;
 
@@ -89,6 +93,7 @@ class BootstrapNavMenuWalker extends Walker_Nav_Menu {
 			$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
 		else if ( is_object( $args[0] ) )
 			$args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
+			$args[] = '1';
 		$cb_args = array_merge( array(&$output, $element, $depth), $args);
 		call_user_func_array(array(&$this, 'start_el'), $cb_args);
 
@@ -123,4 +128,25 @@ class BootstrapNavMenuWalker extends Walker_Nav_Menu {
 	}
 
    }
+
+   //nuevos post//
+
+   add_action('init', 'crear_carrousel');
+	function crear_carrousel() {
+	register_post_type( 'Testimoniales', array(
+			'labels' => array(
+				'name' => __('Testimoniales'),
+				'singular_name' => __('testimonio')
+				),
+			'public' => true,
+			'show_ui' => true,
+			'rewrite' => array(
+				'slug' => 'testimonio',
+				'with_front' => false
+				),
+	                'supports' => array('title','editor','author','thumbnail','excerpt','comments'),
+			'has_archive' => true,
+		'taxonomies' => array('category', 'post_tag'),	
+		) );
+	}
 ?>

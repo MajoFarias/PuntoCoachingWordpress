@@ -22,10 +22,12 @@ Template Name: Ser coach
           <h3><?php echo $discriptionHead; ?></h3>
         </div>
         <div class="degrade"></div>
-        <img src="<?php echo $image; ?>" alt="">
+        <?php 
+          if( !empty($image) ): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+        <?php endif; ?>
       </div>
     <?php endwhile; else: ?>
-    <h1>no hay post</h1>
     <?php endif; ?>   
   </section>
   <!--**HEAD**-->  
@@ -55,17 +57,14 @@ Template Name: Ser coach
         ?>
             <li><?php echo $tema; ?></li>
           <?php endwhile; else: ?>
-          <h1>no hay post</h1>
           <?php endif; ?> 
 
        </ul>
      </article>
     <?php endwhile; else: ?>
-    <h1>no hay post</h1>
     <?php endif; ?> 
   </div>
   <?php endwhile; else: ?>
-  <h1>no hay post</h1>
   <?php endif; ?>    
 </section>
 <section id="InfoCoach">
@@ -97,7 +96,6 @@ Template Name: Ser coach
             ?>
                  <li><?php echo $date; ?></li>
              <?php endwhile; else: ?>
-            <h1>no hay post</h1>
             <?php endif; ?> 
 
          </ul>
@@ -111,7 +109,7 @@ Template Name: Ser coach
             $date = get_sub_field('date');
              $logo = get_sub_field('logo');
             ?>  
-                  <h4>Memebresia</h4>
+                  <h4>Membresía</h4>
                   <p><?php echo $date; ?></p>
                  <figure>  
                    <img src="<?php echo $logo; ?>" alt="">
@@ -123,7 +121,6 @@ Template Name: Ser coach
         </article>
       </div>
       <?php endwhile; else: ?>
-      <h1>no hay post</h1>
       <?php endif; ?> 
 </section>
 <section id="modulos">
@@ -166,7 +163,6 @@ Template Name: Ser coach
             </ul>
           </article>
         <?php endwhile; else: ?>
-         <h1>no hay post</h1>
          <?php endif; ?> 
      <!-- article -->
 
@@ -174,33 +170,32 @@ Template Name: Ser coach
      <!-- article -->
           <?php if( have_rows('modulo2') ): ?>
             <?php while( have_rows('modulo2') ): the_row();
-              $title = get_sub_field('title');
+              $title2 = get_sub_field('title2');
             ?>   
             <article>
-              <h2><?php echo $title; ?></h2>
               <ul>
-                <?php if( have_rows('temas') ): ?>
-                <?php while( have_rows('temas') ): the_row();
-                  $numero = get_sub_field('numero');
-                  $link = get_sub_field('link');
+                <?php if( have_rows('temas2') ): ?>
+                <?php while( have_rows('temas2') ): the_row();
+                  $numero2 = get_sub_field('numero2');
+                  $link22 = get_sub_field('link22');
+                  $tema2 = get_sub_field('tema2');
                  ?>   
                   <li>
-                   <span class="numeros"><?php echo $numero; ?></span>
-                    <p><?php echo $tema; ?></p>
+                   <span class="numeros"><?php echo $numero2; ?></span>
+                    <p><?php echo $tema2; ?></p>
                   </li>
                   <?php endwhile; else: ?>
                  <h1>no hay post</h1>
                  <?php endif; ?> 
-               <li>
-              </ul>
-              <p class="btnContent btn-want">
-                  <button onclick="window.location.href='<?php echo $link; ?>'"  class="btnColor btn-1 btn-1d">INSCRIBETE</button>
-              </p>  
+               
+              </ul> 
+
+          
             </article>
           <?php endwhile; else: ?>
-           <h1>no hay post</h1>
            <?php endif; ?> 
-       <!-- article -->
+
+                 <!-- article -->
 
 
       <!-- article -->
@@ -210,20 +205,27 @@ Template Name: Ser coach
           ?> 
                <article style="background: url(<?php echo $img; ?>);"></article>
          <?php endwhile; else: ?>
-         <h1>no hay post</h1>
          <?php endif; ?>   
+      
+      <article>
+       <p class="btnContent btn-want" style="text-align:left; margin-left:8%;">
+                  <a href="<?php the_field('linko'); ?>"><button class="btnColor btn-1 btn-1d" style="margin:30px 0;">INSCRÍBETE</button></a>
+              </p> 
+
+      </article>
 
      <!-- article -->
 
 
 
   <?php endwhile; else: ?>
-  <h1>no hay post</h1>
   <?php endif; ?> 
   </div>
 </section>
 
 <?php endwhile; else: ?>
-<h1>no hay post</h1>
 <?php endif; ?> 
+
+<?php include (TEMPLATEPATH. '/testimoniales.php'); ?>
+
 <?php get_footer(); ?>

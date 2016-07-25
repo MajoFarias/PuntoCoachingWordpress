@@ -18,11 +18,14 @@ Template Name: Nosotros
     ?>
       <div class="content two">
         <div class="text"> 
-          <h1><?php echo $title; ?></h1>
-          <h3><?php echo $discriptionHead; ?></h3>
+          <h1 style="color:##220e5c !important"><?php echo $title; ?></h1>
+          <h3 style="color:##220e5c;"><?php echo $discriptionHead; ?></h3>
         </div>
         <div class="degrade"></div>
-        <img src="<?php echo $image; ?>" alt="">
+        <?php 
+          if( !empty($image) ): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+        <?php endif; ?>
       </div>
     <?php endwhile; else: ?>
     <h1>no hay post</h1>
@@ -47,8 +50,9 @@ Template Name: Nosotros
           <h4><?php echo $subtitle; ?></h4>
           <p><?php echo $descript; ?></p>
           <div class="button-2-column">
+
             <p class="btnContent btn-in">
-              <button onclick="window.location.href='<?php echo $link; ?>'" class="btnColor4 btn-1 btn-4f">Soy Persona
+              <button onclick="window.location.href='/reescribe-tu-historia-soy-persona/'" class="btnColor4 btn-1 btn-4f">Soy Persona
               </button>
             </p>
             <p class="btnContent btn-in">
@@ -124,7 +128,7 @@ Template Name: Nosotros
           ?>
              <img src="<?php bloginfo('template_url')?>/assets/img/nosotros2.jpg" alt="">
              <p><?php echo $frase; ?><br>
-            <img src="<?php bloginfo('template_url')?>/assets/img/firma.png" alt="">
+            <img src="<?php bloginfo('template_url')?>/assets/img/firma2.png" alt="">
              </p>
           <?php endwhile; else: ?>
           <h1>no hay post</h1>
@@ -136,4 +140,7 @@ Template Name: Nosotros
 <?php endwhile; else: ?>
 <h1>no hay post</h1>
 <?php endif; ?> 
+
+<?php include (TEMPLATEPATH. '/testimoniales.php'); ?>
+
 <?php get_footer(); ?>

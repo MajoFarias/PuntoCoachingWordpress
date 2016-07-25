@@ -16,7 +16,7 @@
         </article>
 
         <article>
-         <!--  <img src="assets/img/bgCoach.jpg" alt=""> -->
+         <!--  <img src="assets/img/central-coaching-jaime-nunez.jpg" alt="Central Coaching Jaime Nuñez"> -->
         </article>
     <?php endwhile; else: ?>
         <?php endif; ?> 

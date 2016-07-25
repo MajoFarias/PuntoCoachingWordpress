@@ -20,7 +20,10 @@ Template Name: Persona
         <p><?php echo $discriptionHead; ?></p>
       </div>  
       <div class="degrade"></div>
-      <img src="<?php echo $image; ?>" alt="">
+      <?php 
+          if( !empty($image) ): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+      <?php endif; ?>
     </div>
   <?php endwhile; else: ?>
   <h1>no hay post</h1>
@@ -58,7 +61,7 @@ Template Name: Persona
   ?>
   <div class="content">
         <article   
-           style="background: url('<?php echo $image; ?>');"">  
+           style="background: url('<?php echo $image; ?>');">  
         </article>
         <?php if( have_rows('learningText') ): ?>
         <?php while( have_rows('learningText') ): the_row();
@@ -79,7 +82,7 @@ Template Name: Persona
             <h1>no hay post</h1>
             <?php endif; ?> 
           </ul>
-          <h2><?php echo $title; ?></h2>
+          <h2><?php echo $title2; ?></h2>
           <p><?php echo $text; ?></p>
           <p class="btnContent">
             <button onclick="window.location.href='<?php echo $link; ?>'" class="btnColor btn-1 btn-1d">INSCRÍBETE</button>
@@ -97,4 +100,8 @@ Template Name: Persona
 <?php endwhile; else: ?>
 <h1>no hay post</h1>
 <?php endif; ?> 
+
+<?php include (TEMPLATEPATH. '/testimoniales.php'); ?>
+
+
 <?php get_footer(); ?>

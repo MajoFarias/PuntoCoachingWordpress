@@ -22,7 +22,10 @@ Template Name: Calendario
           <h3><?php echo $discriptionHead; ?></h3>
         </div>
         <div class="degrade"></div>
-        <img src="<?php echo $image; ?>" alt="">
+        <?php 
+          if( !empty($image) ): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+        <?php endif; ?>
       </div>
     <?php endwhile; else: ?>
     <h1>no hay post</h1>
@@ -92,7 +95,7 @@ Template Name: Calendario
                       <span><?php echo $lugar; ?></span>
                       <span><?php echo $duracion; ?></span>
                       <span><?php echo $capacidad; ?></span>
-                      <span><a href="<?php echo $link; ?>">INSCRÍBITE > </a></span>
+                      <span><a href="<?php echo $link; ?>">INSCRÍBETE > </a></span>
                     </div>
                 </article>
 
@@ -150,4 +153,7 @@ Template Name: Calendario
 <?php endwhile; else: ?>
 <h1>no hay post</h1>
 <?php endif; ?> 
+
+<?php include (TEMPLATEPATH. '/testimoniales.php'); ?>
+
 <?php get_footer(); ?>
